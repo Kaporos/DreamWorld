@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 800.0
-@export var JUMP_VELOCITY = -800.0
+@export var SPEED = 500.0
+@export var JUMP_VELOCITY = -1000.0
 @export var DECELERATION = 1000;
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 800*2

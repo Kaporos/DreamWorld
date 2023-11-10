@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://coxhwpmda5eeo"]
+
+[ext_resource type="Script" path="res://Platform.gd" id="1_crwjx"]
+[ext_resource type="Texture2D" uid="uid://bkatcfdgwi5rx" path="res://icon.svg" id="1_pumna"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5lhk"]
+size = Vector2(167, 28)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_crwjx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.28906, 0.226563)
+texture = ExtResource("1_pumna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_h5lhk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

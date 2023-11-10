@@ -24,6 +24,12 @@ window/size/window_height_override=640
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor]
+
+export/size/window_height_override=640
+export/size/window_width_override=360
+export/size/viewport_height=1280
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
