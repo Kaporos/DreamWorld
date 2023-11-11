@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7scrsayv54vk"]
+[gd_scene load_steps=5 format=3 uid="uid://bnvd3jnk4f85n"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_k5vtq"]
 [ext_resource type="Texture2D" uid="uid://bkatcfdgwi5rx" path="res://icon.svg" id="2_iwkhj"]
@@ -6,9 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6oe7f"]
 size = Vector2(124, 126)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqbr0"]
+size = Vector2(123.377, 127.273)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(305, 996)
 scale = Vector2(0.77, 0.77)
+collision_mask = 2
 script = ExtResource("1_k5vtq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,3 +28,15 @@ limit_right = 720
 position_smoothing_enabled = true
 drag_vertical_enabled = true
 drag_bottom_margin = 0.6
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.649353, 2.59741)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_kqbr0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
