@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnier8pfwk64d"]
+
+[ext_resource type="Script" path="res://Object.gd" id="1_talco"]
+[ext_resource type="Texture2D" uid="uid://denb5sl2lddmt" path="res://assets/test-qWTPe6y7O-transformed-removebg-preview.png" id="2_rfw8e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gh08c"]
+radius = 20.0
+height = 84.0
+
+[node name="TimerObj" type="Node2D"]
+position = Vector2(217, 673)
+script = ExtResource("1_talco")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rfw8e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_gh08c")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

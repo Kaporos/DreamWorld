@@ -1,10 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bnvd3jnk4f85n"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_k5vtq"]
-[ext_resource type="Texture2D" uid="uid://d2xgldj68tu45" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="2_k7am1"]
 [ext_resource type="AudioStream" uid="uid://6h5ki8le4y16" path="res://assets/jump.mp3" id="4_dx74h"]
-[ext_resource type="Texture2D" uid="uid://pwxqcwwwdjia" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="5_n4x15"]
-
+[ext_resource type="Texture2D" uid="uid://4nuwk2637kvq" path="res://assets/Pink_Monster_Idle_4.png" id="2_7fle3"]
+[ext_resource type="Texture2D" uid="uid://pwxqcwwwdjia" path="res://assets/Pink_Monster_Run_6.png" id="3_4fl6c"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6oe7f"]
 size = Vector2(124, 126)
 
