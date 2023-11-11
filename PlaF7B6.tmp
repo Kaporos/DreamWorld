@@ -35,10 +35,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.649353, 2.59741)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kqbr0")
-
-[node name="Marker" type="Marker2D" parent="."]
-position = Vector2(-401.299, 825.974)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
