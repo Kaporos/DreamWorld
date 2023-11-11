@@ -2,6 +2,16 @@ extends Node2D
 @export var p_scene: PackedScene;
 var rng = RandomNumberGenerator.new()
 @export var nbr = 4;
+@export var sleep_time = 10;
+
+func _ready():
+	$Timer.wait_time = sleep_time
+	$Timer.start()
+	$Timer.connect("timeout", dead)
+
+func dead():
+	get_tree().get_nodes_in_group("player")[0].set_physics_process(false)
+	get_tree().get_nodes_in_group("go")[0].visible = true
 func spawn_random():
 	var platforms = get_tree().get_nodes_in_group("platform")
 	var pt = p_scene.instantiate()
@@ -11,6 +21,7 @@ func spawn_random():
 	pt.global_position.x = rng.randf_range(0, width-200)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_tree().get_nodes_in_group("progress")[0].value = $Timer.time_left*100/sleep_time
 	var nbrA = len(get_tree().get_nodes_in_group("platform"))
 	if nbrA == 0:
 		var pt = p_scene.instantiate()
@@ -25,4 +36,16 @@ func _process(delta):
 		spawn_random()
 	nbr = nbrA
 	
+	
+
+
+func _on_button_pressed():
+	var ps = get_tree().get_nodes_in_group("platform");
+	for p in ps:
+		p.queue_free()
+	get_tree().get_nodes_in_group("player")[0].set_physics_process(true)
+	get_tree().get_nodes_in_group("go")[0].visible = false
+	var scoreLabel =  get_tree().get_nodes_in_group("score")[0]
+	scoreLabel.text = str(0)
+	$Timer.start()
 	

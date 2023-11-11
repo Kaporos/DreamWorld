@@ -8,4 +8,6 @@ func _ready():
 	marker = player.get_node("Marker")
 func _process(_delta):
 	if global_position.y > marker.global_position.y:
+		var scoreLabel =  get_tree().get_nodes_in_group("score")[0]
+		scoreLabel.text = str(int(scoreLabel.text) + 1)
 		queue_free()
