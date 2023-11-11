@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnvd3jnk4f85n"]
+[gd_scene load_steps=11 format=3 uid="uid://bnvd3jnk4f85n"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_k5vtq"]
 [ext_resource type="Texture2D" uid="uid://d2xgldj68tu45" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="2_k7am1"]
+[ext_resource type="AudioStream" uid="uid://6h5ki8le4y16" path="res://assets/jump.mp3" id="4_dx74h"]
 [ext_resource type="Texture2D" uid="uid://pwxqcwwwdjia" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="5_n4x15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6oe7f"]
@@ -37,6 +38,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkr3x"]
+radius = 26.4884
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(305, 996)
 scale = Vector2(0.77, 0.77)
@@ -69,6 +73,16 @@ position = Vector2(-401.299, 825.974)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_tkvgp")
 animation = &"idle"
+
+[node name="Retrievables" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Retrievables"]
+shape = SubResource("CircleShape2D_fkr3x")
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dx74h")
+pitch_scale = 1.4
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

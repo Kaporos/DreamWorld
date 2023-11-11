@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwvrsflnw0nj"]
+[gd_scene load_steps=14 format=3 uid="uid://cwvrsflnw0nj"]
 
 [ext_resource type="PackedScene" uid="uid://bnvd3jnk4f85n" path="res://Player.tscn" id="1_cqfq3"]
 [ext_resource type="PackedScene" path="res://tile_map.tscn" id="1_irm2q"]
 [ext_resource type="Script" path="res://ParallaxLayer.gd" id="1_sbr0i"]
 [ext_resource type="PackedScene" uid="uid://ci58pvtvssaot" path="res://Platform.tscn" id="2_ifom1"]
 [ext_resource type="Script" path="res://World.gd" id="3_jhd7a"]
+[ext_resource type="PackedScene" uid="uid://cnier8pfwk64d" path="res://TIMER.tscn" id="6_8kieg"]
+[ext_resource type="AudioStream" uid="uid://ch0jvgnjesff8" path="res://assets/clock.mp3" id="7_m7okd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_am5pu"]
 
@@ -89,9 +91,16 @@ layer_0/tile_data = PackedInt32Array(524290, 65536, 1, -196597, 65536, 1, -45875
 position = Vector2(1, 0)
 script = ExtResource("3_jhd7a")
 p_scene = ExtResource("2_ifom1")
+timerObj = ExtResource("6_8kieg")
+
+[node name="TimerTimer" type="Timer" parent="World"]
+wait_time = 6.0
 
 [node name="Timer" type="Timer" parent="World"]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
+stream = ExtResource("7_m7okd")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -163,6 +172,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gaw54")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e8pbg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_svyng")
 theme_override_styles/focus = SubResource("StyleBoxFlat_svyng")
-text = "Replay"
+text = "5 more minutes mom please"
 
+[connection signal="timeout" from="World/TimerTimer" to="World" method="_on_timer_timer_timeout"]
 [connection signal="pressed" from="HUD/Control/VBoxContainer/Button" to="World" method="_on_button_pressed"]
