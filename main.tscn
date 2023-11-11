@@ -1,23 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwvrsflnw0nj"]
+[gd_scene load_steps=6 format=3 uid="uid://cwvrsflnw0nj"]
 
-[ext_resource type="PackedScene" uid="uid://bnvd3jnk4f85n" path="res://Player.tscn" id="1_cqfq3"]
-[ext_resource type="PackedScene" uid="uid://coxhwpmda5eeo" path="res://Platform.tscn" id="2_ifom1"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1_cqfq3"]
+[ext_resource type="Texture2D" uid="uid://bkatcfdgwi5rx" path="res://icon.svg" id="1_njdi0"]
+[ext_resource type="Script" path="res://Node2D.gd" id="3_hbs6o"]
+[ext_resource type="PackedScene" uid="uid://c16t1oylsb7r2" path="res://tile_map.tscn" id="3_lvmbo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5lhk"]
+size = Vector2(475, 76)
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_cqfq3")]
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(305, 1214)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(132, 1189)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(508, 1042)
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(178, 0)
+scale = Vector2(3.78125, 1)
+texture = ExtResource("1_njdi0")
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(330, 779)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(171.5, -28)
+shape = SubResource("RectangleShape2D_h5lhk")
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(139, 628)
+[node name="BG" type="Node2D" parent="."]
 
-[node name="StaticBody2D5" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(139, 628)
+[node name="ColorRect" type="ColorRect" parent="BG"]
+z_index = -2
+offset_left = -124.0
+offset_top = -88.0
+offset_right = 848.0
+offset_bottom = 1396.0
+color = Color(0.0235294, 0.811765, 1, 0.54902)
+
+[node name="generation" type="Node2D" parent="BG"]
+script = ExtResource("3_hbs6o")
+
+[node name="TileMap" parent="BG" instance=ExtResource("3_lvmbo")]
+unique_name_in_owner = true
+scale = Vector2(4, 4)
+layer_0/tile_data = PackedInt32Array(1376265, 65536, 1, 327686, 65536, 1, 720906, 65536, 1)
