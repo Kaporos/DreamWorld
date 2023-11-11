@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bnvd3jnk4f85n"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_k5vtq"]
-[ext_resource type="Texture2D" uid="uid://d2xgldj68tu45" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="2_k7am1"]
-[ext_resource type="Texture2D" uid="uid://pwxqcwwwdjia" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="5_n4x15"]
+[ext_resource type="Texture2D" uid="uid://4nuwk2637kvq" path="res://assets/Pink_Monster_Idle_4.png" id="2_7fle3"]
+[ext_resource type="Texture2D" uid="uid://pwxqcwwwdjia" path="res://assets/Pink_Monster_Run_6.png" id="3_4fl6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6oe7f"]
 size = Vector2(124, 126)
@@ -10,19 +10,19 @@ size = Vector2(124, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqbr0"]
 size = Vector2(123.377, 127.273)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4iuta"]
-atlas = ExtResource("2_k7am1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt0yk"]
+atlas = ExtResource("2_7fle3")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mewe7"]
-atlas = ExtResource("5_n4x15")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jakn7"]
+atlas = ExtResource("3_4fl6c")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tkvgp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4iuta")
+"texture": SubResource("AtlasTexture_gt0yk")
 }],
 "loop": true,
 "name": &"idle",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mewe7")
+"texture": SubResource("AtlasTexture_jakn7")
 }],
 "loop": true,
 "name": &"run",
