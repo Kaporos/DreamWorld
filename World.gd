@@ -21,12 +21,14 @@ func spawn_random():
 	pt.global_position.x = rng.randf_range(0, width-200)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var player = get_tree().get_nodes_in_group("player")[0]
+	if abs(player.velocity.y) > 2000:
+		dead()
 	get_tree().get_nodes_in_group("progress")[0].value = $Timer.time_left*100/sleep_time
 	var nbrA = len(get_tree().get_nodes_in_group("platform"))
 	if nbrA == 0:
 		var pt = p_scene.instantiate()
 		add_child(pt)
-		var player = get_tree().get_nodes_in_group("player")[0]
 		pt.global_position.y = player.global_position.y + 100
 		pt.global_position.x = player.global_position.x - 80;
 		for x in range(0, nbr-1):
@@ -43,7 +45,10 @@ func _on_button_pressed():
 	var ps = get_tree().get_nodes_in_group("platform");
 	for p in ps:
 		p.queue_free()
-	get_tree().get_nodes_in_group("player")[0].set_physics_process(true)
+	var player = get_tree().get_nodes_in_group("player")[0]
+	player.set_physics_process(true)
+	player.velocity.y = 0
+	player.velocity.x = 0
 	get_tree().get_nodes_in_group("go")[0].visible = false
 	var scoreLabel =  get_tree().get_nodes_in_group("score")[0]
 	scoreLabel.text = str(0)
