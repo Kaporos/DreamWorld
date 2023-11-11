@@ -1,23 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwvrsflnw0nj"]
+[gd_scene load_steps=4 format=3 uid="uid://cwvrsflnw0nj"]
 
 [ext_resource type="PackedScene" uid="uid://bnvd3jnk4f85n" path="res://Player.tscn" id="1_cqfq3"]
 [ext_resource type="PackedScene" uid="uid://coxhwpmda5eeo" path="res://Platform.tscn" id="2_ifom1"]
+[ext_resource type="Script" path="res://World.gd" id="3_jhd7a"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_cqfq3")]
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(305, 1214)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(508, 1042)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(330, 779)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(139, 628)
-
-[node name="StaticBody2D5" parent="." instance=ExtResource("2_ifom1")]
-position = Vector2(139, 628)
+[node name="World" type="Node2D" parent="."]
+position = Vector2(1, 0)
+script = ExtResource("3_jhd7a")
+p_scene = ExtResource("2_ifom1")
