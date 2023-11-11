@@ -18,6 +18,17 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction != 0:
 		velocity.x = SPEED * direction ;
+	if velocity.x != 0:
+		if velocity.x < 0:
+			$anim.flip_h = true
+			$anim.animation = "run"
+
+		else:
+			$anim.flip_h = false
+			$anim.animation = "run"
+
+	else:
+		$anim.animation = "idle"
 	$CollisionShape2D.disabled = velocity.y < 0 || inPLatform
 	if velocity.x > 0: 
 		if velocity.x - DECELERATION*delta < 0:

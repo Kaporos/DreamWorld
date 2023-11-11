@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnvd3jnk4f85n"]
+[gd_scene load_steps=9 format=3 uid="uid://bnvd3jnk4f85n"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_k5vtq"]
-[ext_resource type="Texture2D" uid="uid://bkatcfdgwi5rx" path="res://icon.svg" id="2_iwkhj"]
+[ext_resource type="Texture2D" uid="uid://d2xgldj68tu45" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster.png" id="2_k7am1"]
+[ext_resource type="Texture2D" uid="uid://pwxqcwwwdjia" path="res://assets/free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png" id="5_n4x15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6oe7f"]
 size = Vector2(124, 126)
@@ -9,14 +10,38 @@ size = Vector2(124, 126)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqbr0"]
 size = Vector2(123.377, 127.273)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iuta"]
+atlas = ExtResource("2_k7am1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mewe7"]
+atlas = ExtResource("5_n4x15")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkvgp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iuta")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mewe7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(305, 996)
 scale = Vector2(0.77, 0.77)
 collision_mask = 2
 script = ExtResource("1_k5vtq")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_iwkhj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -39,6 +64,11 @@ shape = SubResource("RectangleShape2D_kqbr0")
 
 [node name="Marker" type="Marker2D" parent="."]
 position = Vector2(-401.299, 825.974)
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tkvgp")
+animation = &"idle"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
