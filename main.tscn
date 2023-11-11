@@ -6,6 +6,26 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="BG" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BG"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BG/ParallaxBackground"]
+position = Vector2(1, 0)
+motion_mirroring = Vector2(0, 6250)
+script = ExtResource("1_sbr0i")
+
+[node name="ColorRect" type="ColorRect" parent="BG/ParallaxBackground/ParallaxLayer"]
+offset_left = -685.0
+offset_top = -4858.0
+offset_right = 1681.0
+offset_bottom = 1642.0
+color = Color(0.152941, 0.717647, 1, 1)
+
+[node name="TileMap" parent="BG/ParallaxBackground/ParallaxLayer" instance=ExtResource("1_irm2q")]
+scale = Vector2(3, 3)
+layer_0/tile_data = PackedInt32Array(524290, 65536, 1, -196597, 65536, 1, -458753, 65536, 1, -1441793, 65536, 1, -2686970, 65536, 1, -4980719, 524288, 6, -5963773, 524288, 6, -983028, 524288, 11, -2031614, 524288, 11, -3407859, 524288, 11, -4980734, 524288, 11, -6094835, 524288, 11, -5308406, 524288, 6, -4128765, 65536, 10, -3604479, 65536, 6, -1966066, 524288, 11, -1179641, 524288, 11, 655371, 524288, 11, 1376258, 524288, 11, 1572875, 524288, 11)
+
 [node name="Player" parent="." instance=ExtResource("1_cqfq3")]
 
 [node name="World" type="Node2D" parent="."]
